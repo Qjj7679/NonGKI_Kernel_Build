@@ -236,6 +236,17 @@ jobs:
             echo "Disabled SUSFS !"
           fi
 
+        # 步骤 1: 克隆 Patches 仓库
+      - name: Clone Patches Repository
+        run: |
+          git clone https://github.com/Qjj7679/NonGKI_Kernel_Build/blob/main/Patches.git $GITHUB_WORKSPACE/Patches --depth=1
+
+      # 步骤 2: 调试目录结构
+      - name: Debug - List Files
+        run: |
+          ls -la $GITHUB_WORKSPACE
+          ls -la $GITHUB_WORKSPACE/Patches
+
       - name: Patch Kernel for no-kprobe
         run: |
           cp $GITHUB_WORKSPACE/Patches/patches.sh device_kernel/
