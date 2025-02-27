@@ -236,10 +236,10 @@ jobs:
             echo "Disabled SUSFS !"
           fi
 
-  - name: Clone Main Repository
+ - name: Clone Main Repository
   run: |
     git clone https://github.com/Qjj7679/NonGKI_Kernel_Build.git --depth=1
-    ls -la NonGKI_Kernel_Build/Patches  # 验证子目录存在
+    ls -la NonGKI_Kernel_Build/Patches
 
 - name: Copy Patches Directory
   run: |
