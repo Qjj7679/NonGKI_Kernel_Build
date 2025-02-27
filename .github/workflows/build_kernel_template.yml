@@ -236,15 +236,6 @@ jobs:
             echo "Disabled SUSFS !"
           fi
 
- - name: Clone Main Repository
-  run: |
-    git clone https://github.com/Qjj7679/NonGKI_Kernel_Build.git --depth=1
-    ls -la NonGKI_Kernel_Build/Patches
-
-- name: Copy Patches Directory
-  run: |
-    cp -r NonGKI_Kernel_Build/Patches $GITHUB_WORKSPACE/Patches
-
       - name: Patch Kernel for no-kprobe
         run: |
           cp $GITHUB_WORKSPACE/Patches/patches.sh device_kernel/
