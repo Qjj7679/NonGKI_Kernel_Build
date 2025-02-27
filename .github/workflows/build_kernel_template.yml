@@ -5,16 +5,6 @@ on:
 
 jobs:
   build:
-      
-       name: Clone Patches Repository
-        run: |
-          git clone https://github.com/Qjj7679/NonGKI_Kernel_Build/blob/main/Patches.git $GITHUB_WORKSPACE/Patches --depth=1
-
-      name: Debug - List Files
-        run: |
-          ls -la $GITHUB_WORKSPACE
-          ls -la $GITHUB_WORKSPACE/Patches
-
     name: Build Kernel by ${{ github.actor }}
     runs-on: ubuntu-22.04
     env:
