@@ -239,7 +239,6 @@ jobs:
       - name: Patch Kernel for no-kprobe
         run: |
 git clone https://github.com/Qjj7679/NonGKI_Kernel_Build.git --depth=1
-    ls -la NonGKI_Kernel_Build/Patches
           cd $GITHUB_WORKSPACE/
           cp Patches/patches.sh device_kernel/
           cd device_kernel
