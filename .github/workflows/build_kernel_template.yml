@@ -153,21 +153,16 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           git clone --recursive ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_BRANCH }} device_kernel --depth=1
+
+   cd $GITHUB_WORKSPACE/device_kernel
+
+git submodule add <https://github.com/oppo-source/android_kernel_modules_and_devicetree_oppo_sm7325.git> vendor/oplus/kernel/oplus_performance/sched_assist
+git submodule update --init --recursive
+
           if [[ -n "${{ env.DEFCONFIG_SOURCE }}" ]]; then
             wget ${{ env.DEFCONFIG_SOURCE }} -O device_kernel/arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           fi
           echo "KERNEL_VERSION=$(head -n 3 device_kernel/Makefile | grep -E 'VERSION|PATCHLEVEL' | awk '{print $3}' | paste -sd '.')" >> $GITHUB_ENV
-
-- name: Get Kernel_MODULES Source
-  run: |
-cd $GITHUB_WORKSPACE
-    git clone --recursive "${{ env.KERNEL_MODULES_SOURCE }}" -b "${{ env.KERNEL_MODULES_BRANCH }}" kernel_modules --depth=1
-
-- name: Sync Kernel_MODULES Code
-  run: |
-cd $GITHUB_WORKSPACE
-    rsync -a kernel_modules/ device_kernel/
-
 
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
