@@ -164,7 +164,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           git clone --recursive ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} kernel_modules --depth=1
-          ls device_kernel
+          ls $GITHUB_WORKSPACE
 
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
