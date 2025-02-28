@@ -180,10 +180,6 @@ jobs:
             echo "CONFIG_KSU_SUSFS_OPEN_REDIRECT=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           fi
 
-name: Get Kernel_Modules Source
-        run: |
-cd $GITHUB_WORKSPACE/device_kernel
-
       - name: Set Pack Method and KernelSU and SUSFS
         run: |
           # Variable
