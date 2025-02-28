@@ -162,9 +162,10 @@ jobs:
 
       - name: Get Kernel_modules Source
         run: |
-          cd $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE/device_kernel
           git clone --recursive ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} kernel_modules --depth=1
-          ls $GITHUB_WORKSPACE
+          ls $GITHUB_WORKSPACE/device_kernel
+          ls $GITHUB_WORKSPACE/device_kernel/kernel_modules
 
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
