@@ -160,7 +160,6 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           git clone --recursive ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_BRANCH }} kernel_modules/2/3/device_kernel --depth=1
-          rsync -av ./kernel_modules/ /kernel_modules/2/3/device_kernel
           if [[ -n "${{ env.DEFCONFIG_SOURCE }}" ]]; then
             wget ${{ env.DEFCONFIG_SOURCE }} -O kernel_modules/2/3/device_kernel/arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           fi
