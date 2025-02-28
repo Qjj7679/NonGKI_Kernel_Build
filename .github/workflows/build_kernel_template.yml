@@ -162,8 +162,6 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
 
-git clone https://github.com/oppo-source/android_kernel_modules_and_devicetree_oppo_sm7325.git kernel_modules_source
-
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
