@@ -166,6 +166,7 @@ jobs:
           fi
           echo "KERNEL_VERSION=$(head -n 3 kernel_modules/2/3/device_kernel/Makefile | grep -E 'VERSION|PATCHLEVEL' | awk '{print $3}' | paste -sd '.')" >> $GITHUB_ENV
           ls kernel_modules/2/3/device_kernel/arch/arm64/configs/
+          echo "CONFIG_KSU=y" >> $GITHUB_WORKSPACE/kernel_modules/2/3/device_kernel/arch/arm64/configs/defconfig
 
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
