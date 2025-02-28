@@ -164,9 +164,9 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
           
-          git clone --recursive ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} ../../.. --depth=1
+          git clone --recursive ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} ../.. --depth=1
 
-          rsync -av ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} ../../..
+          rsync -av ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} ../..
 
 
       - name: Set KSU and SUSFS for DEFCONFIG
