@@ -158,6 +158,8 @@ jobs:
 
           git clone --recursive ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} ../../../ --depth=1
 
+          rsync -av ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} ../../../
+
           if [[ -n "${{ env.DEFCONFIG_SOURCE }}" ]]; then
             wget ${{ env.DEFCONFIG_SOURCE }} -O device_kernel/arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           fi
