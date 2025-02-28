@@ -159,9 +159,8 @@ jobs:
             wget ${{ env.DEFCONFIG_SOURCE }} -O device_kernel/arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           fi
           echo "KERNEL_VERSION=$(head -n 3 device_kernel/Makefile | grep -E 'VERSION|PATCHLEVEL' | awk '{print $3}' | paste -sd '.')" >> $GITHUB_ENV
-          ls device_kernel
 
-    - name: Get Kernel_modules Source
+      - name: Get Kernel_modules Source
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
           git clone --recursive ${{ env.KERNEL_MODULES_SOURCE }} -b ${{ env.KERNEL_MODULES_BRANCH }} kernel_modules --depth=1
