@@ -158,6 +158,12 @@ jobs:
           fi
           echo "KERNEL_VERSION=$(head -n 3 device_kernel/Makefile | grep -E 'VERSION|PATCHLEVEL' | awk '{print $3}' | paste -sd '.')" >> $GITHUB_ENV
 
+      - name: Get Kernel_MODULES Source
+        run: |
+          cd $GITHUB_WORKSPACE/device_kernel
+          git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_BRANCH }} ../../../
+          rsync -a source/ ../../../
+
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
