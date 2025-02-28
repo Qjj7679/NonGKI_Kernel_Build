@@ -161,8 +161,7 @@ jobs:
       - name: Get Kernel_modules Source
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
-         git submodule add <https://github.com/oppo-source/android_kernel_modules_and_devicetree_oppo_sm7325.git> vendor/oplus/kernel/oplus_performance/sched_assist
-git submodule update --init --recursive
+         
 
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
