@@ -164,7 +164,7 @@ jobs:
             wget ${{ env.DEFCONFIG_SOURCE }} -O device_kernel/arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           fi
           echo "KERNEL_VERSION=$(head -n 3 device_kernel/Makefile | grep -E 'VERSION|PATCHLEVEL' | awk '{print $3}' | paste -sd '.')" >> $GITHUB_ENV
-          ls /kernel_modules
+          ls device_kernel
 
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
