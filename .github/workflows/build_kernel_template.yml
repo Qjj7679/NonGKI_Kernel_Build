@@ -258,7 +258,7 @@ jobs:
           echo "CONFIG_LTO_NONE=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_INIT_STACK_NONE=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           sed -i 's/# CONFIG_SECCOMP is not set/CONFIG_SECCOMP=y/' ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
-          sed -i '/CONFIG_SCHED_ASSIST/d' ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
+          ls -al kernel/
 
       - name: Setup LXC
         if: env.LXC_ENABLE == 'true'
