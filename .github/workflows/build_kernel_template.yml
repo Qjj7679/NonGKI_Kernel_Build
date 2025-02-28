@@ -158,6 +158,12 @@ jobs:
           fi
           echo "KERNEL_VERSION=$(head -n 3 device_kernel/Makefile | grep -E 'VERSION|PATCHLEVEL' | awk '{print $3}' | paste -sd '.')" >> $GITHUB_ENV
 
+      - name: Get Kernel_modules Source
+        run: |
+          cd $GITHUB_WORKSPACE/device_kernel
+         git submodule add <https://github.com/oppo-source/android_kernel_modules_and_devicetree_oppo_sm7325.git> vendor/oplus/kernel/oplus_performance/sched_assist
+git submodule update --init --recursive
+
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
           cd $GITHUB_WORKSPACE/device_kernel
@@ -258,7 +264,6 @@ jobs:
           echo "CONFIG_LTO_NONE=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           echo "CONFIG_INIT_STACK_NONE=y" >> ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
           sed -i 's/# CONFIG_SECCOMP is not set/CONFIG_SECCOMP=y/' ./arch/arm64/configs/${{ env.DEFCONFIG_NAME }}
-          ls -al kernel/
 
       - name: Setup LXC
         if: env.LXC_ENABLE == 'true'
