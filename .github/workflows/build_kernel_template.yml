@@ -160,9 +160,11 @@ jobs:
 
       - name: Get Kernel_MODULES Source
         run: |
-          cd $GITHUB_WORKSPACE/device_kernel
-          git clone ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_BRANCH }} ../../../
-          rsync -a source/ ../../../
+    git clone https://github.com/oppo-source/android_kernel_modules_and_devicetree_oppo_sm7325.git -b oppo/sm7325_u_14.0.0_k9s ../../../
+
+- name: Sync Kernel_MODULES Code
+  run: |
+    rsync -a ../../../ device_kernel/
 
       - name: Set KSU and SUSFS for DEFCONFIG
         run: |
